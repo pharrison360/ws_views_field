@@ -1,14 +1,19 @@
 <?php
 
 /**
+* @file
+* Tokens file.
+*/
+
+/**
  * Implements hook_token_info().
  */
 function ws_views_field_token_info() {
-  $types = array();
-  $tokens = array();
+  $types = [];
+  $tokens = [];
 
   // Get all existing webforms.
-  $webforms = array();
+  $webforms = [];
   $entities = \Drupal::entityTypeManager()->getStorage('webform')->loadMultiple(NULL);
   foreach ($entities as $entity) {
     $webforms[$entity->id()] = $entity;
@@ -19,21 +24,22 @@ function ws_views_field_token_info() {
    * @var $webform \Drupal\webform\Entity\Webform
    */
   foreach ($webforms as $key => $webform) {
-    $type = array(
+    $type = [
       'name' => $webform->label(),
       'needs-data' => 'webform_submission',
-    );
+    ];
 
     $types[$key] = $type;
 
-    $tokens_fields = array();
+    $tokens_fields = [];
 
     // Get the fields used in this webform.
     $webform_elements = $webform->getElementsDecodedAndFlattened();
 
-    $elements = array();
+    $elements =[];
+    $skip_types = ['details', 'webform_flexbox', 'webform_actions'];
     foreach ($webform_elements as $element_id => $element) {
-      if (!in_array($element['#type'], array('details', 'webform_flexbox', 'webform_actions'))) {
+      if (!in_array($element['#type'], $skip_types)) {
         if (isset($element['#title'])) {
           $elements[$element_id] = $element['#title'];
 
@@ -41,9 +47,9 @@ function ws_views_field_token_info() {
             $element['#title'] = "[{$element_id}]";
           }
 
-          $tokens_fields[$element_id] = array(
+          $tokens_fields[$element_id] = [
             'name' => $element['#title'],
-          );
+          ];
         }
       }
     }
@@ -51,10 +57,8 @@ function ws_views_field_token_info() {
     $tokens[$key] = $tokens_fields;
   }
 
-  $return = array(
+  return [
     'types' => $types,
     'tokens' => $tokens
-  );
-
-  return $return;
+  ];
 }
