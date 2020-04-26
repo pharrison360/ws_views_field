@@ -1,0 +1,7 @@
+name: Webform Submission Views Field
+description: 'Allow webform submission tokens in views fields'
+type: module
+core: 8.x
+dependencies:
+  - webform:webform
+  - token:token
