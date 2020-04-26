@@ -32,7 +32,7 @@ class WSViewsField extends FieldPluginBase {
    */
   protected function defineOptions() {
     $options = parent::defineOptions();
-    $options['token'] = array('default' => '');
+    $options['token'] = ['default' => ''];
 
     return $options;
   }
@@ -57,7 +57,7 @@ class WSViewsField extends FieldPluginBase {
     // Add webform tokens.
     $webforms = $this->getWebforms();
     $form['ws_tokens']['tokens'] = \Drupal::service('token.tree_builder')
-      ->buildRenderable(array_keys($webforms), array('recursion_limit' => 1));
+      ->buildRenderable(array_keys($webforms), ['recursion_limit' => 1]);
 
     // Display info on how to use tokens from webform_submission module.
     module_load_include('inc', 'webform', 'webform.tokens');
@@ -68,9 +68,10 @@ class WSViewsField extends FieldPluginBase {
       '#title' => $this->t('Advanced use of tokens'),
     ];
 
-    $form['ws_tokens']['ws_use_token']['info'] = array(
-      '#markup' => $webform_submission_tokens['tokens']['webform_submission']['values']['description'],
-    );
+    $description = $webform_submission_tokens['tokens']['webform_submission']['values']['description'];
+    $form['ws_tokens']['ws_use_token']['info'] = [
+      '#markup' => $description,
+    ];
 
     parent::buildOptionsForm($form, $form_state);
   }

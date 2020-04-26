@@ -14,15 +14,14 @@ function ws_views_field_token_info() {
 
   // Get all existing webforms.
   $webforms = [];
-  $entities = \Drupal::entityTypeManager()->getStorage('webform')->loadMultiple(NULL);
+  $entities = \Drupal::entityTypeManager()
+    ->getStorage('webform')
+    ->loadMultiple(NULL);
+
   foreach ($entities as $entity) {
     $webforms[$entity->id()] = $entity;
   }
 
-  /**
-   * @var $key
-   * @var $webform \Drupal\webform\Entity\Webform
-   */
   foreach ($webforms as $key => $webform) {
     $type = [
       'name' => $webform->label(),
@@ -36,13 +35,10 @@ function ws_views_field_token_info() {
     // Get the fields used in this webform.
     $webform_elements = $webform->getElementsDecodedAndFlattened();
 
-    $elements =[];
     $skip_types = ['details', 'webform_flexbox', 'webform_actions'];
     foreach ($webform_elements as $element_id => $element) {
       if (!in_array($element['#type'], $skip_types)) {
         if (isset($element['#title'])) {
-          $elements[$element_id] = $element['#title'];
-
           if (empty($element['#title'])) {
             $element['#title'] = "[{$element_id}]";
           }
