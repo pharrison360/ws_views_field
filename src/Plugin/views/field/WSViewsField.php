@@ -7,7 +7,6 @@ use Drupal\Core\Render\Markup;
 use Drupal\views\Plugin\views\field\FieldPluginBase;
 use Drupal\views\ResultRow;
 
-
 /**
  * Field handler to WS Field Token.
  *
@@ -104,7 +103,7 @@ class WSViewsField extends FieldPluginBase {
       $token = str_replace($bundle, "webform_submission:values", $token);
 
       $token = $token_service->replace($token, [
-        'webform_submission' => $webform_submission_entity
+        'webform_submission' => $webform_submission_entity,
       ]);
     }
 
@@ -113,12 +112,13 @@ class WSViewsField extends FieldPluginBase {
 
   /**
    * Get existing webforms.
+   *
    * @return \Drupal\webform\Entity\Webform[]
    *   All available webforms.
    */
   private function getWebforms() {
     // Get all existing webforms.
-    $webforms = array();
+    $webforms = [];
     $entities = \Drupal::entityTypeManager()->getStorage('webform')->loadMultiple(NULL);
     foreach ($entities as $entity) {
       $webforms[$entity->id()] = $entity;

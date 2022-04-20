@@ -1,9 +1,9 @@
 <?php
 
 /**
-* @file
-* Tokens file.
-*/
+ * @file
+ * Tokens file.
+ */
 
 /**
  * Implements hook_token_info().
@@ -22,6 +22,7 @@ function ws_views_field_token_info() {
     $webforms[$entity->id()] = $entity;
   }
 
+  /** @var \Drupal\webform\WebformInterface $webform */
   foreach ($webforms as $key => $webform) {
     $type = [
       'name' => $webform->label(),
@@ -55,6 +56,6 @@ function ws_views_field_token_info() {
 
   return [
     'types' => $types,
-    'tokens' => $tokens
+    'tokens' => $tokens,
   ];
 }
