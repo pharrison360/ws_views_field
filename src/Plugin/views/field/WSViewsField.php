@@ -100,7 +100,7 @@ class WSViewsField extends FieldPluginBase {
     // Replace the tokens for each webform submissions.
     foreach ($webfom_submission_entities as $bundle => $webform_submission_entity) {
       // Create the real  webform submission.
-      $token = str_replace($bundle, "webform_submission:values", $token);
+      $token = str_replace($bundle . ':', "webform_submission:values:", $token);
 
       $token = $token_service->replace($token, [
         'webform_submission' => $webform_submission_entity,
