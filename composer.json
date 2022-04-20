@@ -1,0 +1,21 @@
+{
+    "name": "AronNovak/ws_views_field",
+    "description": "Allow webform submission tokens in views fields",
+    "type": "drupal-module",
+    "license": "GPL-2.0-or-later",
+    "authors": [
+        {
+            "name": "Ionut Alexuc (ionut.alexuc)",
+            "homepage": "https://www.drupal.org/u/ionutalexuc",
+            "role": "Maintainer"
+        }
+    ],
+    "homepage": "https://www.drupal.org/project/ws_views_field",
+    "support": {
+        "issues": "https://www.drupal.org/project/issues/ws_views_field",
+        "source": "https://git.drupalcode.org/project/ws_views_field"
+    },
+    "require": {
+        "drupal/webform": "*"
+    }
+}
