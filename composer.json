@@ -1,5 +1,5 @@
 {
-    "name": "AronNovak/ws_views_field",
+    "name": "aronnovak/ws_views_field",
     "description": "Allow webform submission tokens in views fields",
     "type": "drupal-module",
     "license": "GPL-2.0-or-later",
