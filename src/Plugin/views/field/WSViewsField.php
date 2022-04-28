@@ -104,7 +104,7 @@ class WSViewsField extends FieldPluginBase {
 
       $token = $token_service->replace($token, [
         'webform_submission' => $webform_submission_entity,
-      ]);
+      ], ['clear' => TRUE]);
     }
 
     return Markup::create($token);
