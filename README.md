@@ -1,4 +1,4 @@
-Fork from https://www.drupal.org/project/ws_views_field - a working Drupal 9-compatible version of the module.
+Fork from https://www.drupal.org/project/ws_views_field - a working Drupal 11-compatible version of the module.
 
 # ws_views_field
 
