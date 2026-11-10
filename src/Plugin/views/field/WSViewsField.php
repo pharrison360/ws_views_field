@@ -59,7 +59,7 @@ class WSViewsField extends FieldPluginBase {
       ->buildRenderable(array_keys($webforms), ['recursion_limit' => 1]);
 
     // Display info on how to use tokens from webform_submission module.
-    module_load_include('inc', 'webform', 'webform.tokens');
+    \Drupal::moduleHandler()->loadInclude('webform', 'inc', 'webform.tokens');
     $webform_submission_tokens = webform_token_info();
 
     $form['ws_tokens']['ws_use_token'] = [
